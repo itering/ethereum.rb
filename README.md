@@ -253,7 +253,7 @@ Ethereum.rb supports signing transactions with key using [ruby-eth gem](https://
 To create a new key simply do the following:
 
 ```ruby
-key = Eth::Key.new
+key = Eth_DEP::Key.new
 ```
 
 Then you can use the key to deploy contracts and send transactions, i.e.:

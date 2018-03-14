@@ -119,7 +119,7 @@ module Ethereum
     end
 
     def send_raw_transaction(payload, to = nil)
-      Eth.configure { |c| c.chain_id = @client.net_version["result"].to_i }
+      Eth_DEP.configure { |c| c.chain_id = @client.net_version["result"].to_i }
       @nonce ||= @client.get_nonce(key.address) - 1
       @nonce += 1
       args = {
@@ -131,7 +131,7 @@ module Ethereum
         gas_price: gas_price
       }
       args[:to] = to if to
-      tx = Eth::Tx.new(args)
+      tx = Eth_DEP::Tx.new(args)
       tx.sign key
       @client.eth_send_raw_transaction(tx.hex)["result"]
     end

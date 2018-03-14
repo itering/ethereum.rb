@@ -87,7 +87,7 @@ module Ethereum
 
 
     def transfer(key, address, amount)
-      Eth.configure { |c| c.chain_id = net_version["result"].to_i }
+      Eth_DEP.configure { |c| c.chain_id = net_version["result"].to_i }
       args = { 
         from: key.address,
         to: address,
@@ -97,7 +97,7 @@ module Ethereum
         gas_limit: gas_limit,
         gas_price: gas_price
       }
-      tx = Eth::Tx.new(args)
+      tx = Eth_DEP::Tx.new(args)
       tx.sign key
       eth_send_raw_transaction(tx.hex)["result"]
     end

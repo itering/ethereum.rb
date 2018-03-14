@@ -6,7 +6,7 @@ describe Ethereum do
   let(:client) { Ethereum::Singleton.instance }
   let(:path) { "#{Dir.pwd}/spec/fixtures/TestContract.sol" }
   let(:private_hex) { "3a9f0de356f75c0af771119c6ada8c6f911d61a07bd3efcf91eedb28bd42e83f" }
-  let(:key) { Eth::Key.new priv: private_hex }
+  let(:key) { Eth_DEP::Key.new priv: private_hex }
   let(:amount) { 1000_000_000_000_000 }
 
   it "deploys with key set value and checks value", blockchain: true do
